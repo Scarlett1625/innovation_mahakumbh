@@ -3,115 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Innovation Mahakumbha - SNDT Women's University</title>
+    <title>Innovation Mahakumbh - SNDT Women's University</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* General Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: #f5f7fa;
             color: #333;
             line-height: 1.6;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
-        /* Header Styles */
+
+        /* --- Animations --- */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* --- Header Styles --- */
         header {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f);
             color: white;
             padding: 15px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             position: sticky;
             top: 0;
             z-index: 100;
         }
-        
+
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
             gap: 15px;
         }
-        
+
         .logo-icon {
             font-size: 2.5rem;
             color: #fdbb2d;
         }
-        
+
         .logo-text h1 {
             font-size: 1.8rem;
             font-weight: 700;
         }
-        
+
         .logo-text p {
             font-size: 0.9rem;
             opacity: 0.9;
         }
-        
+
         nav ul {
             display: flex;
             list-style: none;
             gap: 25px;
         }
-        
+
         nav ul li a {
             color: white;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
-            padding: 5px 10px;
+            padding: 8px 15px;
             border-radius: 4px;
         }
-        
-        nav ul li a:hover {
+
+        nav ul li a:hover,
+        nav ul li a:focus {
             color: #ffdd40;
             background: rgba(255, 255, 255, 0.1);
+            outline: 2px solid #ffdd40;
+            outline-offset: 2px;
         }
-        
-        /* Hero Section */
+
+        /* Mobile Menu (Hamburger) */
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            display: none;
+        }
+
+        /* --- Hero Section --- */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-            padding: 100px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            padding: 120px 0;
             text-align: center;
             color: white;
         }
-        
+
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
         }
-        
+
         .hero h2 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: #ffdd40;
         }
-        
+
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 30px;
         }
-        
+
+        .hero .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
         .btn {
             display: inline-block;
             background: #fdbb2d;
             color: #1a2a6c;
-            padding: 12px 30px;
+            padding: 15px 35px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
@@ -119,24 +160,44 @@
             border: none;
             cursor: pointer;
             font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
-        
-        .btn:hover {
+
+        .btn:hover,
+        .btn:focus {
             background: #ffdd40;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            outline: none;
         }
-        
-        /* Section Styles */
+
+        .btn.btn-primary {
+            background: #ffdd40;
+            color: #1a2a6c;
+            animation: pulse 2s infinite;
+        }
+
+        .btn.btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid #ffdd40;
+        }
+
+        .btn.btn-secondary:hover {
+            background: #ffdd40;
+            color: #1a2a6c;
+        }
+
+        /* --- Section Styles --- */
         section {
             padding: 80px 0;
         }
-        
+
         .section-title {
             text-align: center;
             margin-bottom: 50px;
         }
-        
+
         .section-title h2 {
             font-size: 2.5rem;
             color: #1a2a6c;
@@ -144,7 +205,7 @@
             position: relative;
             display: inline-block;
         }
-        
+
         .section-title h2::after {
             content: '';
             position: absolute;
@@ -156,59 +217,62 @@
             background: #b21f1f;
             border-radius: 2px;
         }
-        
+
         .section-title p {
             color: #666;
             max-width: 700px;
             margin: 0 auto;
         }
-        
-        /* About Section */
+
+        /* --- About Section --- */
         .about-content {
             display: flex;
             align-items: center;
             gap: 40px;
+            flex-wrap: wrap;
         }
-        
+
         .about-text {
             flex: 1;
+            min-width: 300px;
         }
-        
+
         .about-text p {
             margin-bottom: 20px;
             font-size: 1.1rem;
         }
-        
+
         .about-image {
             flex: 1;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease;
         }
-        
+
+        .about-image:hover {
+            transform: scale(1.02);
+        }
+
         .about-image img {
             width: 100%;
             height: auto;
             display: block;
-            transition: transform 0.5s ease;
+            object-fit: cover;
         }
-        
-        .about-image:hover img {
-            transform: scale(1.05);
-        }
-        
-        /* Workshop Section */
+
+        /* --- Workshop Section --- */
         .workshop-highlights {
             background: #f0f5ff;
         }
-        
+
         .cards-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
-        
+
         .card {
             background: white;
             border-radius: 10px;
@@ -216,69 +280,78 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        
+
         .card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
         }
-        
+
         .card-content {
             padding: 25px;
         }
-        
+
         .card-icon {
             font-size: 2.5rem;
             color: #b21f1f;
             margin-bottom: 20px;
         }
-        
+
         .card h3 {
             font-size: 1.4rem;
             margin-bottom: 15px;
             color: #1a2a6c;
         }
-        
-        /* Event Details */
+
+        /* --- Event Details --- */
         .event-details {
             background: linear-gradient(135deg, #1a2a6c, #2c3e50);
             color: white;
         }
-        
+
         .event-details .section-title h2 {
             color: white;
         }
-        
+
+        .event-details .section-title p {
+            color: #ddd;
+        }
+
         .details-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
-        
+
         .detail-box {
             background: rgba(255, 255, 255, 0.1);
             padding: 30px;
             border-radius: 10px;
             text-align: center;
             backdrop-filter: blur(5px);
+            transition: background 0.3s ease;
         }
-        
+
+        .detail-box:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
         .detail-box i {
             font-size: 2.5rem;
             margin-bottom: 20px;
             color: #fdbb2d;
         }
-        
+
         .detail-box h3 {
             font-size: 1.4rem;
             margin-bottom: 15px;
         }
-        
-        /* Registration Section */
+
+        /* --- Registration Section --- */
         .registration {
             background: #f9f9f9;
         }
-        
+
         .form-container {
             max-width: 800px;
             margin: 0 auto;
@@ -287,18 +360,18 @@
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
-        
+
         .form-group {
             margin-bottom: 25px;
         }
-        
+
         .form-group label {
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
             color: #333;
         }
-        
+
         .form-group input,
         .form-group textarea,
         .form-group select {
@@ -308,7 +381,7 @@
             border-radius: 5px;
             font-size: 1rem;
         }
-        
+
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
@@ -316,28 +389,28 @@
             border-color: #1a2a6c;
             box-shadow: 0 0 0 2px rgba(26, 42, 108, 0.2);
         }
-        
-        /* Footer */
+
+        /* --- Footer --- */
         footer {
             background: #1a2a6c;
             color: white;
             padding: 60px 0 30px;
         }
-        
+
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
             margin-bottom: 40px;
         }
-        
+
         .footer-section h3 {
             font-size: 1.4rem;
             margin-bottom: 20px;
             position: relative;
             padding-bottom: 10px;
         }
-        
+
         .footer-section h3::after {
             content: '';
             position: absolute;
@@ -347,38 +420,40 @@
             height: 3px;
             background: #fdbb2d;
         }
-        
+
         .footer-section p {
             margin-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        
+
         .footer-section ul {
             list-style: none;
         }
-        
+
         .footer-section ul li {
             margin-bottom: 10px;
         }
-        
+
         .footer-section ul li a {
             color: #ddd;
             text-decoration: none;
             transition: color 0.3s ease;
         }
-        
-        .footer-section ul li a:hover {
+
+        .footer-section ul li a:hover,
+        .footer-section ul li a:focus {
             color: #fdbb2d;
+            outline: none;
         }
-        
+
         .social-icons {
             display: flex;
             gap: 15px;
             margin-top: 20px;
         }
-        
+
         .social-icons a {
             display: flex;
             align-items: center;
@@ -389,80 +464,80 @@
             border-radius: 50%;
             color: white;
             transition: all 0.3s ease;
+            outline: 2px solid transparent;
         }
-        
-        .social-icons a:hover {
+
+        .social-icons a:hover,
+        .social-icons a:focus {
             background: #fdbb2d;
             color: #1a2a6c;
             transform: translateY(-3px);
+            outline-color: #fdbb2d;
         }
-        
+
         .footer-bottom {
             text-align: center;
             padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        /* Responsive Design */
+        /* --- Responsive Design --- */
         @media (max-width: 992px) {
             .about-content {
                 flex-direction: column;
             }
-            
+
             .hero h2 {
                 font-size: 2.5rem;
             }
         }
-        
+
         @media (max-width: 768px) {
             .header-content {
-                flex-direction: column;
-                gap: 20px;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
             }
-            
+
             nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                background: #1a2a6c;
+                padding: 20px 0;
+                position: absolute;
+                top: 70px; /* Adjust based on header height */
+                left: 0;
             }
-            
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                padding: 80px 0;
+            }
+
             .hero h2 {
                 font-size: 2rem;
             }
-            
+
             .section-title h2 {
                 font-size: 2rem;
             }
-            
+
             .form-container {
                 padding: 20px;
             }
         }
-        
-        .save-instructions {
-            background: #fff8e1;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-            border-left: 4px solid #ffc107;
-        }
-        
-        .save-instructions h3 {
-            color: #1a2a6c;
-            margin-bottom: 10px;
-        }
-        
-        .save-instructions ol {
-            margin-left: 20px;
-        }
-        
-        .save-instructions li {
-            margin-bottom: 10px;
-        }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
             <div class="header-content">
@@ -476,7 +551,7 @@
                     </div>
                 </div>
                 <nav>
-                    <ul>
+                    <ul id="nav-menu">
                         <li><a href="#about">About</a></li>
                         <li><a href="#workshop">Workshop</a></li>
                         <li><a href="#event">Event Details</a></li>
@@ -484,23 +559,27 @@
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </nav>
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <h2>INNOVATION MAHAKUMBHA</h2>
                 <p>Celebrating Student Innovation & Entrepreneurship</p>
                 <p>November 2025 | SNDT Women's University, Juhu Campus</p>
-                <a href="#registration" class="btn">Register Now</a>
+                <div class="btn-group">
+                    <a href="#registration" class="btn btn-primary">Register Now</a>
+                    <a href="#" class="btn btn-secondary">Share Your Innovation</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
             <div class="section-title">
@@ -514,13 +593,12 @@
                     <p>Under their guidance, students have developed technology-driven prototypes, sustainable solutions, and entrepreneurial ventures addressing real-world challenges in healthcare, education, agriculture, energy, digital inclusion, and women's empowerment.</p>
                 </div>
                 <div class="about-image">
-                    <img src="maha.png" alt="Innovation Exhibition">
+                    <img src="maha.png" alt="Students collaborating and innovating">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Workshop Section -->
     <section id="workshop" class="workshop-highlights">
         <div class="container">
             <div class="section-title">
@@ -559,7 +637,6 @@
         </div>
     </section>
 
-    <!-- Event Details -->
     <section id="event" class="event-details">
         <div class="container">
             <div class="section-title">
@@ -591,7 +668,6 @@
         </div>
     </section>
 
-    <!-- Registration Section -->
     <section id="registration" class="registration">
         <div class="container">
             <div class="section-title">
@@ -602,39 +678,39 @@
                 <form>
                     <div class="form-group">
                         <label for="name">Student Name</label>
-                        <input type="text" id="name" placeholder="Enter your full name">
+                        <input type="text" id="name" placeholder="Enter your full name" required>
                     </div>
                     <div class="form-group">
                         <label for="institute">Institute Name</label>
-                        <input type="text" id="institute" placeholder="Enter your institute name">
+                        <input type="text" id="institute" placeholder="Enter your institute name" required>
                     </div>
                     <div class="form-group">
                         <label for="address">Institute Address</label>
-                        <input type="text" id="address" placeholder="Enter your institute address">
+                        <input type="text" id="address" placeholder="Enter your institute address" required>
                     </div>
                     <div class="form-group">
                         <label for="course">Course/Programme</label>
-                        <input type="text" id="course" placeholder="Enter your course/programme">
+                        <input type="text" id="course" placeholder="Enter your course/programme" required>
                     </div>
                     <div class="form-group">
                         <label for="year">Current Class/Year</label>
-                        <input type="text" id="year" placeholder="Enter your current class/year">
+                        <input type="text" id="year" placeholder="Enter your current class/year" required>
                     </div>
                     <div class="form-group">
                         <label for="innovation">Title of Innovation</label>
-                        <input type="text" id="innovation" placeholder="Enter the title of your innovation">
+                        <input type="text" id="innovation" placeholder="Enter the title of your innovation" required>
                     </div>
                     <div class="form-group">
                         <label for="participants">Number of Students Presenting</label>
-                        <input type="number" id="participants" placeholder="Enter number of participants">
+                        <input type="number" id="participants" placeholder="Enter number of participants" required>
                     </div>
                     <div class="form-group">
                         <label for="phone">Contact Number</label>
-                        <input type="tel" id="phone" placeholder="Enter your contact number">
+                        <input type="tel" id="phone" placeholder="Enter your contact number" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" placeholder="Enter your email address">
+                        <input type="email" id="email" placeholder="Enter your email address" required>
                     </div>
                     <button type="submit" class="btn">Submit Registration</button>
                 </form>
@@ -642,7 +718,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer id="contact">
         <div class="container">
             <div class="footer-content">
@@ -665,10 +740,10 @@
                     <h3>Follow Us</h3>
                     <p>Stay updated with the latest news and announcements</p>
                     <div class="social-icons">
-                        <a href="https://www.facebook.com/sndtwuniversity/"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://x.com/Sndt_Digital/"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.instagram.com/sndtwuinsta/?hl=en"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com/school/sndtwu/?originalSubdomain=in"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/sndtwuniversity/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/Sndt_Digital/" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/sndtwuinsta/?hl=en" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/school/sndtwu/?originalSubdomain=in" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
@@ -678,6 +753,12 @@
             </div>
         </div>
     </footer>
+    
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            var navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
-
